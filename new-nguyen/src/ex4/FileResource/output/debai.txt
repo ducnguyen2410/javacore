@@ -1,0 +1,19 @@
+Bài tập 1:
+Viết chương trình copy file từ thư mục input sang thư mục output.
+Yêu cầu chương trình chạy liên tục không bao giờ dừng. Cứ copy file vào thư mục input là file đó sẽ được chuyển sang thư mục output.
+Bài tập 2:
+Viết chương trình xử lý bản tin. Có thư mục đầu vào là input. Cứ đọc thư mục input liên tục. Cứ khi trong thư mục có file là đọc và đem đi phân tích.
+Với lệnh trừ tiền thì đem trừ tiền của thuê bao sau đó update lại file danh sách thuê bao ( msisdn.txt )
+Với lệnh cộng tiền thì cộng tiền cho thuê bao đó, sau đó update lại file danh sách thuê bao ( msisdn.txt )
+Với lệnh chuyển tiền thì chuyển tiền từ thuê bao a sang thuê bao b rồi trừ tiền của thuê bao a và cộng tiền cho thue bao b rồi cập nhật lại file msisdn.txt
+Định dạng file msisdn.txt là như sau:
+Mỗi một dòng là một thuê bao với đầy đủ các trường sau:
+Số điện thoại|số tiền trong tài khoản|thời gian cuối cập nhật
+Định dạng file đầu vào bản tin có định dạng như sau:
+Cộng tiền: add|số thuê bao|số tiền được cộng
+Trừ tiền: minus|số thuê bao|số tiền trừ
+Chuyển tiền: tranfer|số thuê bao a|số thuê bao b|số tiền chuyển
+Sau mỗi bản tin được xử lý xong cần ghi lại ra file kết quả với cấu trúc như sau:
+Cộng tiền: add|số thuê bao|số tiền được cộng|kết quả|miêu tả kết quả|Thời gian bắt đầu xử lý|Thời gian kết thúc xử lý
+Trừ tiền: minus|số thuê bao|số tiền trừ|kết quả|miêu tả kết quả|Thời gian bắt đầu xử lý|Thời gian kết thúc xử lý
+Chuyển tiền: tranfer|số thuê bao a|số thuê bao b|số tiền chuyển|kết quả|miêu tả kết quả|Thời gian bắt đầu xử lý|Thời gian kết thúc xử lý

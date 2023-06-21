@@ -1,0 +1,1 @@
+Application -> Logger -> Handler -> Formatter => Console window

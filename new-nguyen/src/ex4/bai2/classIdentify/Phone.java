@@ -18,11 +18,6 @@ public class Phone {
         this.lanCuoiSuaDoi = lanCuoiSuaDoi;
     }
 
-    public static ArrayList<Phone> getList()
-    {
-        return list;
-    }
-
     public String getSdt() {
         return sdt;
     }
@@ -55,14 +50,9 @@ public class Phone {
         return true;
     }
 
-    public static void addToList(Phone temp)
+    public boolean inList(ArrayList<Phone> listPhone)
     {
-        list.add(temp);
-    }
-
-    public boolean inList()
-    {
-        for(Phone i: getList())
+        for(Phone i: listPhone)
         {
             if(i.sdt.contains(this.sdt)) return true;
         }
@@ -75,6 +65,7 @@ public class Phone {
         this.soDuTaiKhoan += command.getSoTienChuyen();
         String strLanCuoiSuaDoi = LocalDateTime.now().format(dt);
         this.lanCuoiSuaDoi = LocalDateTime.parse(strLanCuoiSuaDoi, dt);
+        command.setSuccess(true);
     }
 
     public void minusTransaction(Command command)
@@ -86,18 +77,10 @@ public class Phone {
             this.soDuTaiKhoan -= command.getSoTienChuyen();
             this.lanCuoiSuaDoi = LocalDateTime.parse(strLanCuoiSuaDoi, dt);
             command.setSuccess(true);
+            command.setSuccess(true);
         }else
         {
             command.setSuccess(false);
         }
-    }
-
-    public static Phone getPhoneNumberObject(String target)
-    {
-        for(Phone i: list)
-        {
-            if(i.getSdt().contains(target)) return i;
-        }
-        return new Phone(null,0,LocalDateTime.now());
     }
 }

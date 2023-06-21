@@ -10,8 +10,8 @@ public class Command{
     private Phone sdtChuyenDen;
     private boolean success;
 
-    public boolean isSuccess() {
-        return success;
+    public boolean getSuccess() {
+        return this.success;
     }
 
     public void setSuccess(boolean success) {
@@ -68,7 +68,7 @@ public class Command{
                 if(i.getSdt().contains(this.sdtGoc.getSdt())) return true;
             }else if(this.lenh.contains("transfer"))
             {
-                if(i.getSdt().contains(this.sdtGoc.getSdt()) && i.getSdt().contains(this.sdtChuyenDen.getSdt())) return true;
+                if(listPhone.indexOf(this.getSdtGoc()) != -1 && listPhone.indexOf(this.getSdtChuyenDen()) != -1) return true;
             }
         }
         return false;

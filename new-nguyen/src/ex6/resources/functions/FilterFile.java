@@ -11,9 +11,9 @@ public class FilterFile implements Runnable{
 	
 	private BlockingQueue<InputFormat> listCorrect;
 	private BlockingQueue<InputFormat> listIncorrect;
-	private List<InputFormat> mainList;
+	private BlockingQueue<InputFormat> mainList;
 	
-	public FilterFile(BlockingQueue<InputFormat> listCorrect, BlockingQueue<InputFormat> listIncorrect, List<InputFormat> mainList) {
+	public FilterFile(BlockingQueue<InputFormat> listCorrect, BlockingQueue<InputFormat> listIncorrect, BlockingQueue<InputFormat> mainList) {
 		this.listCorrect = listCorrect;
 		this.listIncorrect = listIncorrect;
 		this.mainList = mainList;
@@ -21,16 +21,17 @@ public class FilterFile implements Runnable{
 	
 	@Override
 	public void run() {
-		try {
-			for (InputFormat i : mainList) {
-				if (isCorrectMessage(i)) {
-					listCorrect.put(i);
-				} else {
-					listIncorrect.put(i);
+		while(true) {
+			try {
+				InputFormat element = mainList.take();
+				if(isCorrectMessage(element)) {
+					listCorrect.put(element);
+				}else {
+					listIncorrect.put(element);
 				}
+			}catch (InterruptedException e) {
+				e.printStackTrace();
 			}
-		}catch (Exception e) {
-			e.printStackTrace();
 		}
 	}
 	
@@ -42,5 +43,13 @@ public class FilterFile implements Runnable{
 			if(text.contains(i)) return false;
 		}
 		return true;
+	}
+	
+	public BlockingQueue<InputFormat> getListCorrect() {
+		return listCorrect;
+	}
+	
+	public BlockingQueue<InputFormat> getListIncorrect() {
+		return listIncorrect;
 	}
 }
